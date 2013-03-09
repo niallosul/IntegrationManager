@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>Contact Book</title>
+	
+	<link rel="stylesheet" type="text/css" href="css/IntMgr.css"/>
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+	
+	<script type="text/javascript" src="js/projectModel.js"></script>
+	<script type="text/javascript" src="js/projectController.js"></script>
+	<script type="text/javascript">
+	
+	//Global Structures and Reference Data		
+	var interfacelist= new ifaceList; 
+	var newiFace = interfacelist.addiface(new iface(1, "GL Outbound", "pftgl"));
+	newiFace = interfacelist.addiface(new iface(3, "Professional Claims Outbound", "837p"));
+	newiFace = interfacelist.addiface(new iface(5, "Institutional Claims", "837i"));
+	newiFace = interfacelist.addiface(new iface(9, "Remittances Inbound", "835"));
+	newiFace = interfacelist.addiface(new iface(2, "Statements Outbound", "stmt"));
+	newiFace = interfacelist.addiface(new iface(17, "Refunds Outbound", "pftap"));
+	
+	var defaultifacelist = new integrationPointList();
+	for (var i=0;i<interfacelist.getAll().length;i++){
+	  if (i in interfacelist.getAll()) {
+		     defaultifacelist.addipoint(new ipoint(interfacelist.getDetails(i).id, 0));
+	  }
+	}
+
+	$( function() {
+		
+		var anmcifacelist = new integrationPointList();
+		var newiPoint = anmcifacelist.addipoint(new ipoint(1, 3));
+		newiPoint = anmcifacelist.addipoint(new ipoint(5, 2));
+		newiPoint = anmcifacelist.addipoint(new ipoint(9, 5));
+		newiPoint = anmcifacelist.addipoint(new ipoint(2, 4));
+
+		var bghoifacelist = new integrationPointList();
+		var newiPoint = bghoifacelist.addipoint(new ipoint(3, 3));
+		newiPoint = bghoifacelist.addipoint(new ipoint(2, 2));
+		newiPoint = bghoifacelist.addipoint(new ipoint(1, 5));
+		newiPoint = bghoifacelist.addipoint(new ipoint(17, 4));
+		newiPoint = bghoifacelist.addipoint(new ipoint(9, 4));
+		newiPoint = bghoifacelist.addipoint(new ipoint(5, 4));
+		
+		var irdlifacelist = new integrationPointList();
+		
+		var newBook1 = new IntMgr($('#contacts1'), "All Projects")
+		var newEntry = newBook1.addContact(new Contact( "ANMC_KS", "Anthony Medical Center", "niallosul@gmail.com", anmcifacelist ));
+		newEntry = newBook1.addContact(new Contact( "BGHO_TX", "Belleville General", "adam@gmail.com", bghoifacelist ));
+	    newEntry = newBook1.addContact(new Contact( "IRDL_NC", "Iredell Memorial", "niallosul@hotmail.com", irdlifacelist ));
+		newEntry = newBook1.addContact(new Contact( "MRHO_IA", "Monroe Regional", "heather@live.com", defaultifacelist ));
+		
+		createProjectList( newBook1)		
+	});
+	</script>
+  </head>
+
+  <body>
+	<div id='contacts1' class='contactsbox'></div>
+  </body>
+</html>

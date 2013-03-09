@@ -1,0 +1,118 @@
+
+body{ font: "Trebuchet MS", sans-serif}
+h2 { font-family:"Arial Narrow",Arial, Helvetica, sans-serif; font-size: 1.75em;margin:3px; color:#888888; letter-spacing:.1em; }
+h3 { font-size: .8em; font-style:italic;color:#888888; margin:2px;}
+
+fieldset { padding:0; border:0; margin-top:25px; }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.contactsbox {width:720px; 
+			  height:520px; 
+			  border:1px solid grey;
+			  padding:10px;
+			  -webkit-border-radius: .75em;
+			  -moz-border-radius: .75em;
+			  border-radius: .75em;
+			  margin:10px;
+}
+
+.contactleft {width:200px; float:left}
+
+.contactlist { height:380px; overflow:auto; width:150px; margin-top:10px;margin-bottom:10px}
+.contactlist li { padding: 2px; 
+				margin-bottom:1px;
+				font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+				list-style: none;
+}
+.contactlist li:hover {border: 1px solid #fbcb09; background: #fdf5ce; cursor: pointer;}
+.contactright {width:400px;float:left; height:470px;}
+	
+.contactright input {
+	border:0; 
+	margin:1px;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;  
+	background-color: rgba(0, 0, 0, 0.1);
+} 	
+.contactright input[disabled] {background-color: rgba(0, 0, 0, 0.0);}
+
+.disparea  {margin-top:10px;}
+
+.dispname  {
+	font-size: 1.75em; 
+	padding:5px; 
+	color: #1c94c4; 
+	width:300px;
+} 
+
+.fndisp{
+	text-align:right;
+} 
+
+
+.ctemail {
+	font-size: 1em; 
+	color: #888888; 
+	width:292px;
+	text-align:right;
+} 
+
+.interfacearea  {height:345px;}
+.interfacearea li { padding: 2px; 
+				margin-bottom:1px;
+				font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+				list-style: none;
+}
+.interfacearea li:hover {border: 1px solid #fbcb09; background: #fdf5ce; cursor: pointer;}
+
+
+.contactbuttons {width:290px;text-align:center}
+
+.activecontact { background: #fdf5ce;}
+
+ button
+		{
+		margin-right: 5px;
+		padding: 1px 5px 1px 5px;
+		color: #296A84;
+		border: solid 1px #b6d6ff;
+		-webkit-border-radius: .5em;
+		-moz-border-radius: .5em;
+		border-radius: .5em;
+		-webkit-box-shadow: 1px 1px 1px #ccc;
+		box-shadow: 2px 2px 2px #bbb;
+		background-color: #CCCCFF;
+		font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+		font-size:.9em;
+		}
+ button:hover
+		{
+		cursor: pointer;
+		background-color:#FECA40;
+		color: #296A84;
+		}
+
+ button[disabled] 
+		{
+        color: #AAAAB8;
+		box-shadow: 0px 0px 0px;
+		}
+		
+ button[disabled]:hover 
+		{
+        cursor: default;
+		background-color: #CCCCFF;
+		color:#AAAAB8;
+		}

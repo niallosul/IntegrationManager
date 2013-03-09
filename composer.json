@@ -1,0 +1,23 @@
+{
+    "name": "IntMgr",
+    "description": "Integration Manager",
+    "authors": [
+        {
+            "name": "Niall OSullivan",
+            "email": "niallosul@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+			"db",
+            "Src/",
+            "Tests/",
+            "api/Slim",
+            "google/Src"
+        ]
+    },
+    "config": {
+        "vendor-dir" : "Vendors",
+        "vendor-bin" : "Vendors/bin"
+    }
+}
