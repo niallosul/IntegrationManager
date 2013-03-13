@@ -1,0 +1,109 @@
+
+html, body { height: 100%; width: 99%; margin:auto; }
+body{ font: 75% "Trebuchet MS", sans-serif}
+h2 { font-family:"Arial Narrow",Arial, Helvetica, sans-serif; font-size: 1.75em; margin: .6em 0;color:#888888; letter-spacing:.1em; }
+fieldset { padding:0; border:0; margin-top:25px; }
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+	
+.menu_login_container table tr{vertical-align:top}
+.menu_login_container table tr td{padding:0 0 0 14px}
+.menu_login_container label{font-weight:normal;padding-left:1px}
+.menu_login_container .inputlabel {color:#1c94c4}
+
+.patlink, .tasklink, .issuelink {padding: .4em 1em .4em 20px;text-decoration: none;margin-bottom:2px; position: relative;}
+.patlink:hover, .tasklink:hover, .issuelink:hover {border: 1px solid #fbcb09; background: #fdf5ce; cursor: pointer;}
+
+.projTable  {font-size:95%; width: 100%; border-collapse: collapse; background: white; color: #1c94c4  }
+.projTable tr:nth-child(odd) {background-color:#fdf5ce;}
+
+.newIssue {text-align:right;padding:0 10px 0 0;}
+.newIssue:hover {color: #E78F08; cursor: pointer;}
+.issStamp {font-size: .8em; font-style:italic;color:#888888;}
+.issText {font-size: 1em; padding: .4em 1em; margin-bottom:1em;  width: 75%;}
+
+.issueHeader {
+	height:50px; 
+	overflow:auto;
+	color:#888888;
+	border: 1px solid #1c94c4;
+	padding: 5px;
+	margin-bottom:10px;
+	font-family: "Trebuchet MS", sans-serif;
+	}
+
+#issueform label {display:block}
+#issueform input {margin-bottom:25px}
+#issueform textarea {
+	width: 400px;
+	height: 100px;
+	color: #1c94c4;
+	border: 1px solid #cccccc;
+	padding: 5px;
+	font-family: "Trebuchet MS", sans-serif;
+	}
+	
+.bigform input {display:block; width:95%}
+.bigform label {display:block; font-size: .8em; font-style:italic;color:#888888;}
+.bigform select {width:95%; "Trebuchet MS", sans-serif; padding: 2px;color:#1c94c4}
+		
+.projteam label {display:block; width:95%; font-size: .8em; font-style:italic;color:#888888;}
+.projteam select {display:block; width:95%; "Trebuchet MS", sans-serif; padding: 2px;color:#1c94c4;}
+
+
+#tasktable table {border-collapse: collapse;}
+#tasktable .skew {
+    height: 80px;
+    width: 60px;
+    position: relative;
+    vertical-align: bottom;
+}
+#tasktable .skew > div {
+    position: relative;
+    top: 0px;
+    left: 45px;
+    height: 100%;
+    transform:skew(-45deg,0deg);
+    -ms-transform:skew(-45deg,0deg); 
+    -moz-transform:skew(-45deg,0deg); 
+    -webkit-transform:skew(-45deg,0deg); 
+    -o-transform:skew(-45deg,0deg);    
+    overflow: hidden;
+    border-top: 1px solid #CCCCCC;
+    border-left: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+ 
+#tasktable .skew span {
+    transform:skew(45deg,0deg) rotate(315deg);
+    -ms-transform:skew(45deg,0deg) rotate(315deg); 
+    -moz-transform:skew(45deg,0deg) rotate(315deg); 
+    -webkit-transform:skew(45deg,0deg) rotate(315deg); 
+    -o-transform:skew(45deg,0deg) rotate(315deg);        
+    position: absolute;
+    bottom: 15px;
+    left: 1px;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+
+#tasktable td {
+    width: 40px;
+    height: 35px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #CCCCCC;
+}

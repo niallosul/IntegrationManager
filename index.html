@@ -2,63 +2,148 @@
 <html lang="en">
   <head>
 	<meta charset="utf-8">
-	<title>Contact Book</title>
-	
-	<link rel="stylesheet" type="text/css" href="css/IntMgr.css"/>
+	<title>Integration Manager</title>
+    <link rel="stylesheet" type="text/css" href="http://sulincdesign.com/ocm/css/ui-lightness.css"/>
+	<link rel="stylesheet" type="text/css" href="css/cim.css"/>
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
-	
-	<script type="text/javascript" src="js/projectModel.js"></script>
-	<script type="text/javascript" src="js/projectController.js"></script>
-	<script type="text/javascript">
-	
-	//Global Structures and Reference Data		
-	var interfacelist= new ifaceList; 
-	var newiFace = interfacelist.addiface(new iface(1, "GL Outbound", "pftgl"));
-	newiFace = interfacelist.addiface(new iface(3, "Professional Claims Outbound", "837p"));
-	newiFace = interfacelist.addiface(new iface(5, "Institutional Claims", "837i"));
-	newiFace = interfacelist.addiface(new iface(9, "Remittances Inbound", "835"));
-	newiFace = interfacelist.addiface(new iface(2, "Statements Outbound", "stmt"));
-	newiFace = interfacelist.addiface(new iface(17, "Refunds Outbound", "pftap"));
-	
-	var defaultifacelist = new integrationPointList();
-	for (var i=0;i<interfacelist.getAll().length;i++){
-	  if (i in interfacelist.getAll()) {
-		     defaultifacelist.addipoint(new ipoint(interfacelist.getDetails(i).id, 0));
-	  }
-	}
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
-	$( function() {
-		
-		var anmcifacelist = new integrationPointList();
-		var newiPoint = anmcifacelist.addipoint(new ipoint(1, 3));
-		newiPoint = anmcifacelist.addipoint(new ipoint(5, 2));
-		newiPoint = anmcifacelist.addipoint(new ipoint(9, 5));
-		newiPoint = anmcifacelist.addipoint(new ipoint(2, 4));
+	<script type="text/javascript" src="js/intmgr.js"></script>
 
-		var bghoifacelist = new integrationPointList();
-		var newiPoint = bghoifacelist.addipoint(new ipoint(3, 3));
-		newiPoint = bghoifacelist.addipoint(new ipoint(2, 2));
-		newiPoint = bghoifacelist.addipoint(new ipoint(1, 5));
-		newiPoint = bghoifacelist.addipoint(new ipoint(17, 4));
-		newiPoint = bghoifacelist.addipoint(new ipoint(9, 4));
-		newiPoint = bghoifacelist.addipoint(new ipoint(5, 4));
-		
-		var irdlifacelist = new integrationPointList();
-		
-		var newBook1 = new IntMgr($('#contacts1'), "All Projects")
-		var newEntry = newBook1.addContact(new Contact( "ANMC_KS", "Anthony Medical Center", "niallosul@gmail.com", anmcifacelist ));
-		newEntry = newBook1.addContact(new Contact( "BGHO_TX", "Belleville General", "adam@gmail.com", bghoifacelist ));
-	    newEntry = newBook1.addContact(new Contact( "IRDL_NC", "Iredell Memorial", "niallosul@hotmail.com", irdlifacelist ));
-		newEntry = newBook1.addContact(new Contact( "MRHO_IA", "Monroe Regional", "heather@live.com", defaultifacelist ));
-		
-		createProjectList( newBook1)		
-	});
-	</script>
-  </head>
+</head>
 
-  <body>
-	<div id='contacts1' class='contactsbox'></div>
-  </body>
+<body>
+
+	<div id='header' class="ui-widget-header" style='overflow:auto;'>
+		<div id='headerleft' style="width:50%; float:left; margin-left:10px">
+			<h1 style="display:inline-block;vertical-align:middle">Integration Manager</h1>
+		</div>
+ 
+		<div id="userheaderright"  style="float:right;margin-right:20px;padding:10px; display:none;">
+			<span id="membername" style="margin-right:10px;color:#1c94c4;font-size:20px;vertical-align:middle"></span>
+			<span id="memberimg"></span>
+		</div>
+ 
+		<div id="loginheaderright" style="float:right;margin-right:20px;padding:10px; display:none">
+			<a href="http://localhost/weblamp442/IntMgr/Src/intmgrtest.php"><button class="funcbutt">Log In/Register</button></a>
+		</div>
+	</div>
+	
+	<div id='loginscreen' style='display:none;padding:30px'>
+		<div id="loginleft" style="width:40%; float:left;">
+			<img style="width:450px; height:400px; vertical-align:middle; padding:.6em;" src="css/titlepage.png"/>
+		</div>
+		<div id="loginright" style="width:40%;float:right;margin:30px; margin-top:130px">
+			<h1 style="color:#1c94c4">Integration Manager is a tool that allows associates to staff, spec, test, and track issues on projects across our client base </h1>
+		</div>
+	</div>
+	
+	<div id='userscreen' style='height:80%; width:99%;display:none;'>		
+	    <div id="left" style='height:100%; width:60%; float:left;'>
+			<div id='fullsection' style='height:100%; width:90%;margin:auto;'>
+				<div><h2>Project List:</h2></div>
+				<div id="projList" style='height:90%; overflow:auto; white-space: nowrap;padding:2px'></div>
+			</div>
+		</div>
+		<div id='right' style='height:100%; width:40%; float:right'>
+			<div id='top' style='height:50%; width:90%;margin:auto'>
+			   <div><h2>Task List:</h2></div>
+			   <div id="taskList" style='height:90%; overflow:auto; white-space: nowrap;'></div>
+			</div>
+			<div id='bottom' style='height:50%; width:90%;margin:auto'>
+			   <div style='height:10%;'><h2>Issues List:</h2></div>
+			   <div id="issuelist" style='height:90%; overflow:auto; white-space: nowrap;'></div>
+			</div>
+		</div>
+	</div>
+
+<div style="display:none">
+
+  <div id="dialog-proj" class="bigform">
+    <div style="width:60%; float:left">
+	<form name="projform" id="proj">
+	<fieldset>
+	   <div style="width:30%; float:left; margin-left:20px;">
+	   Project Name -
+		<label for="mnemonic">Mnemonic</label>
+		<input type="text" name="mnemonic" id="mnemonic" class="required text ui-widget-content ui-corner-all" />
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name" value="" class="required text ui-widget-content ui-corner-all" />
+	   </div>
+
+	   <div style="width:30%; float:right;margin-right:10px">
+	   Dates -
+	   <label for="it1date">IT1</label>
+		<input type="text" name="it1date" id="it1date" value="" class="dtpick ui-widget-content ui-corner-all" />
+		<label for="it2date">IT2</label>
+		<input type="text" name="it2date" id="it2date" value="" class="dtpick ui-widget-content ui-corner-all" />
+		<label for="golivedate">Go Live</label>
+		<input type="text" name="golivedate" id="golivedate" value="" class="dtpick ui-widget-content ui-corner-all" />
+	   </div>
+	   </fieldset>
+	</form>
+	</div>
+	
+	<div id="projteam" class="projteam" style="width:30%; float:right; margin:20px">
+	   Project Team - 
+		<label for="fsi-sa">Systems Analyst</label>
+		<select id="fsi-sa" name="fsi-sa">
+		</select>
+		<label for="fsi-ia">Interface Architect</label>
+		<select id="fsi-ia" name="fsi-ia">
+		</select>
+		<label for="sdc">Delivery Consultant</label>
+		<select id="sdc" name="sdc">
+		</select>
+		<label for="sa">Solution Architect</label>
+		<select id="sa"  name="sa">
+		</select>
+	 </div>
+
+	<div  style="width:95%; float:left;margin-top:20px">
+		<div id="interfaces">
+			<table id='interfacelist'></table>
+		</div>
+	 </div>
+	 
+  </div>
+
+  <div id="dialog-user" title="Member Managment">
+    <div id="usertable" ></div>
+  </div>  
+  
+  
+  <div id="dialog-issues" title="">
+	<form name="issueform" id="issueform">
+	<fieldset>
+		<label for="priority">Priority</label>
+		<input type="number" name="priority" id="priority" class="required text ui-widget-content ui-corner-all" />
+		<label for="detail">Issue Description</label>
+		<textarea name="detail" id="detail" value="" class="ui-corner-all"></textarea>
+	</fieldset>
+	</form>
+  </div>
+
+  <div id="dialog-issuetext" title="">
+    <div id="issDesc" class="issueHeader"></div>
+    <div id="issueText" style="height:310px; overflow:auto"></div>
+	<form name="issueTextform" id="issueTextform">
+	<fieldset>
+		<label for="issText">Message:</label>
+		<input type="textarea" name="issText" id="issText" value="" class="issText ui-widget-content ui-corner-all" />
+		<input class="funcbutt" value="Reply" type="submit" />
+	</fieldset>
+	</form>
+  </div>
+
+  
+   <div id="dialog-task" title="Task View">
+	<div id="tasktable"></div>
+  </div>
+  
+</div>
+
+
+</body>
 </html>

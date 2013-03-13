@@ -14,6 +14,8 @@ $oauth2 = new \Google_Oauth2Service($client);
 //Set up local DB instance
 $intmgrdb = new IntMgrConn();
 $userDAO = new memberDAO($intmgrdb);
+//$projDAO = new projectDAO($intmgrdb);
+        
         
 if (isset($_REQUEST['logout'])) {
   unset($_SESSION['token']);
@@ -26,6 +28,7 @@ if (isset($_GET['code'])) {
   $client->authenticate($_GET['code']);
   $_SESSION['token'] = $client->getAccessToken();
   $user = $oauth2->userinfo->get();
+  $_SESSION['userid'] = $user['id'];
   $locuser = $userDAO->get($user['id']);
   
   if ($locuser->getid() != NULL) {
@@ -44,44 +47,10 @@ if (isset($_GET['code'])) {
      $userDAO->add($newMember);
    }   
   
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+  $redirect = 'http://localhost/weblamp442/IntMgr';
   header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
   return;
 }
-
-if (isset($_SESSION['token'])) {
- $client->setAccessToken($_SESSION['token']);
-}
-
-if ($client->getAccessToken()) {
-  $user = $oauth2->userinfo->get();
-  $locuser = $userDAO->get($user['id']);
-  
-  $email = filter_var($user['email'], FILTER_SANITIZE_EMAIL);
-  $img = filter_var($user['picture'], FILTER_VALIDATE_URL);
-  $personMarkup = "$email<div><img src='$img?sz=50'></div>";
-
-  // The access token may have been updated lazily.
-  $_SESSION['token'] = $client->getAccessToken();
-  } 
 else {
-  $authUrl = $client->createAuthUrl();
+   $client->authenticate();
 }
-
-?>
-<!doctype html>
-<html>
-<head><meta charset="utf-8"></head>
-<body>
-<header><h1>Integration Manager User Application</h1></header>
-<?php if(isset($personMarkup)): ?>
-<?php print $personMarkup ?>
-<?php endif ?>
-<?php
-  if(isset($authUrl)) {
-    print "<a class='login' href='$authUrl'>Connect Me!</a>";
-  } else {
-   print "<a class='logout' href='?logout'>Logout</a>";
-  }
-?>
-</body></html>

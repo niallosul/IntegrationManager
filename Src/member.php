@@ -5,43 +5,50 @@
  */
  class member 
  {
-    private $id;
-    private $lastname;
-    private $firstname;
-	private $token;
-	private $img;
+    private $memInfo = array(); 
 	
     public function setid($id) {
-       $this->id= $id;
+       $this->memInfo['id']= $id;
     }
 
     public function getid() {
-       return ($this->id);
+       return ($this->memInfo['id']);
     }    
 
     public function setfirstname($fn) {
-       $this->firstname= $fn;
+       $this->memInfo['firstname']= $fn;
     }  
     
     public function getfirstname() {
-       return ($this->firstname);
+       return ($this->memInfo['firstname']);
     }
 
     public function setlastname($ln) {
-       $this->lastname= $ln;
+       $this->memInfo['lastname']= $ln;
     }  
     
     public function getlastname() {
-       return ($this->lastname);
+       return ($this->memInfo['lastname']);
     }
     
     public function settoken($token) {
-       $this->token= $token;
+       $this->memInfo['token']= $token;
     }  
     
     public function gettoken() {
-       return ($this->token);
+       return ($this->memInfo['token']);
     }
-	
+
+    public function setimg($link) {
+       $this->memInfo['img']= $link;
+    }  
+    
+    public function getimg() {
+       return ($this->memInfo['img']);
+    }	
+    
+    public function getinfo() {
+       return ($this->memInfo);
+    }	
  }    
 ?>

@@ -18,7 +18,11 @@ $intmgrdb = new \IntMgr\IntMgrConn();
 
 //Register local DAOs 
 $userDAO = new \IntMgr\memberDAO($intmgrdb);
+$projDAO = new \IntMgr\projectDAO($intmgrdb);
 
+$app->get('/session/:val', function ($val) {
+	   echo($_SESSION[$val]); 
+});
 
 // Get All Users from local db
 $app->get('/users', function () use($userDAO) {
@@ -27,7 +31,15 @@ $app->get('/users', function () use($userDAO) {
 
 // Get Specific User from local db 
 $app->get('/users/:id', function ($id) use($userDAO){
-    echo (json_encode($userDAO->get($id))); 
+    $mem = new \IntMgr\member;
+    $mem = $userDAO->get($id);
+    echo (json_encode($mem->getinfo())); 
+});
+
+// Get Specific Users Project List from local db 
+$app->get('/userprojects/:id', function ($id) use($projDAO){
+    $memlist = $projDAO->getbymember($id);
+    echo (json_encode($memlist)); 
 });
 
 // Display the currently logged in user

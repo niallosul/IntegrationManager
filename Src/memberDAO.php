@@ -22,8 +22,8 @@ namespace IntMgr;
     public function get($id) {
         $this->db->connect();
 		$querysql = "SELECT * FROM `member` WHERE id =".$id;
-		return ($this->db->select($querysql));
-		/*		
+		//return ($this->db->select($querysql));
+				
 		$memarr = $this->db->select($querysql);
 		$newMember = new member(); 
         $newMember->setid($memarr[0]->id);
@@ -31,7 +31,6 @@ namespace IntMgr;
         $newMember->setfirstname($memarr[0]->first_name);
         $newMember->settoken($memarr[0]->token);
 		return ($newMember);
-		*/
     }
 
     // Add a new member to the db 
