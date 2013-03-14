@@ -16,6 +16,6 @@ Implementation:
 	
 Next Steps
 - Add issues management widget
-- Enhance Admin tool and Project object
+- Enhance Admin tool to use a PHP MVC Framework (Cake php possibly)
 	
 	
