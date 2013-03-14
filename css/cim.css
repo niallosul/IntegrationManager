@@ -4,6 +4,12 @@ body{ font: 75% "Trebuchet MS", sans-serif}
 h2 { font-family:"Arial Narrow",Arial, Helvetica, sans-serif; font-size: 1.75em; margin: .6em 0;color:#888888; letter-spacing:.1em; }
 fieldset { padding:0; border:0; margin-top:25px; }
 
+form {
+margin:5px auto;
+padding-bottom:10px;
+}
+
+
 ::-webkit-scrollbar {
     width: 12px;
 }
@@ -26,9 +32,6 @@ fieldset { padding:0; border:0; margin-top:25px; }
 .patlink, .tasklink, .issuelink {padding: .4em 1em .4em 20px;text-decoration: none;margin-bottom:2px; position: relative;}
 .patlink:hover, .tasklink:hover, .issuelink:hover {border: 1px solid #fbcb09; background: #fdf5ce; cursor: pointer;}
 
-.projTable  {font-size:95%; width: 100%; border-collapse: collapse; background: white; color: #1c94c4  }
-.projTable tr:nth-child(odd) {background-color:#fdf5ce;}
-
 .newIssue {text-align:right;padding:0 10px 0 0;}
 .newIssue:hover {color: #E78F08; cursor: pointer;}
 .issStamp {font-size: .8em; font-style:italic;color:#888888;}
@@ -44,66 +47,92 @@ fieldset { padding:0; border:0; margin-top:25px; }
 	font-family: "Trebuchet MS", sans-serif;
 	}
 
-#issueform label {display:block}
-#issueform input {margin-bottom:25px}
-#issueform textarea {
-	width: 400px;
-	height: 100px;
-	color: #1c94c4;
-	border: 1px solid #cccccc;
+.smallholder {
+	height:250px; 
+	width:95%;
+	float:left;
+	border: 1px solid #1c94c4;
 	padding: 5px;
-	font-family: "Trebuchet MS", sans-serif;
+	margin:10px;
+	}
+
+.toolholder {
+	height:500px; 
+	width:95%;
+	float:left;
+	border: 1px solid #1c94c4;
+	padding: 5px;
+	margin:10px;
 	}
 	
-.bigform input {display:block; width:95%}
-.bigform label {display:block; font-size: .8em; font-style:italic;color:#888888;}
+.bigform {
+text-align:center;
+}
+
+.bigform input {
+ float:left;
+ font-size:12px;
+ padding:4px 2px;
+ border:solid 1px #aacfe4;
+ width:45%;
+ margin:2px 0 10px 5px;
+}
+
+.bigform label {
+display:block;
+font-style:italic;
+color:#888888;
+font-weight:bold;
+text-align:right;
+width:45%;
+float:left;
+}
+
+.bigform p{
+font-size:15px;
+color:#666666;
+margin-bottom:20px;
+border-bottom:solid 1px #b7ddf2;
+padding-bottom:10px;
+}
+
 .bigform select {width:95%; "Trebuchet MS", sans-serif; padding: 2px;color:#1c94c4}
 		
 .projteam label {display:block; width:95%; font-size: .8em; font-style:italic;color:#888888;}
 .projteam select {display:block; width:95%; "Trebuchet MS", sans-serif; padding: 2px;color:#1c94c4;}
 
+ button
+		{
+		margin:0 auto;
+		text-align:center;
+		padding: 1px 5px 1px 5px;
+		color: #296A84;
+		border: solid 1px #b6d6ff;
+		-webkit-border-radius: .5em;
+		-moz-border-radius: .5em;
+		border-radius: .5em;
+		-webkit-box-shadow: 1px 1px 1px #ccc;
+		box-shadow: 2px 2px 2px #bbb;
+		background-color: #CCCCFF;
+		font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+		font-size:1.25em;
+		}
+ button:hover
+		{
+		cursor: pointer;
+		background-color:#FECA40;
+		color: #296A84;
+		}
 
-#tasktable table {border-collapse: collapse;}
-#tasktable .skew {
-    height: 80px;
-    width: 60px;
-    position: relative;
-    vertical-align: bottom;
-}
-#tasktable .skew > div {
-    position: relative;
-    top: 0px;
-    left: 45px;
-    height: 100%;
-    transform:skew(-45deg,0deg);
-    -ms-transform:skew(-45deg,0deg); 
-    -moz-transform:skew(-45deg,0deg); 
-    -webkit-transform:skew(-45deg,0deg); 
-    -o-transform:skew(-45deg,0deg);    
-    overflow: hidden;
-    border-top: 1px solid #CCCCCC;
-    border-left: 1px solid #CCCCCC;
-    border-right: 1px solid #CCCCCC;
-}
- 
-#tasktable .skew span {
-    transform:skew(45deg,0deg) rotate(315deg);
-    -ms-transform:skew(45deg,0deg) rotate(315deg); 
-    -moz-transform:skew(45deg,0deg) rotate(315deg); 
-    -webkit-transform:skew(45deg,0deg) rotate(315deg); 
-    -o-transform:skew(45deg,0deg) rotate(315deg);        
-    position: absolute;
-    bottom: 15px;
-    left: 1px;
-    display: inline-block;
-    width: 100%;
-    text-align: left;
-}
-
-#tasktable td {
-    width: 40px;
-    height: 35px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #CCCCCC;
-}
+ button[disabled] 
+		{
+        color: #AAAAB8;
+		box-shadow: 0px 0px 0px;
+		}
+		
+ button[disabled]:hover 
+		{
+        cursor: default;
+		background-color: #CCCCFF;
+		color:#AAAAB8;
+		}

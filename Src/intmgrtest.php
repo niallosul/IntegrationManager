@@ -43,7 +43,12 @@ if (isset($_GET['code'])) {
      $newMember->setlastname($user['family_name']);
      $newMember->setfirstname($user['given_name']);
      $newMember->settoken($client->getAccessToken());
-
+     if ($user['picture']) {
+       $newMember->setimg ($user['picture']);
+     }
+     else {
+       $newMember->setimg ("imgs/silhouette96.png");
+     }  
      $userDAO->add($newMember);
    }   
   

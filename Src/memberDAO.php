@@ -37,8 +37,8 @@ namespace IntMgr;
     public function add($member) {
       $ln = filter_var($member->getlastname(), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $this->db->connect();
-      $insertSql = "INSERT INTO member (id, last_name, first_name, token) "
-      			."VALUES ('".$member->getid()."','".$ln."','".$member->getfirstname()."','".$member->gettoken()."')";
+      $insertSql = "INSERT INTO member (id, last_name, first_name, token, img) "
+      			."VALUES ('".$member->getid()."','".$ln."','".$member->getfirstname()."','".$member->gettoken()."','".$member->getimg()."')";
       echo ("INSERT:".$insertSql);
 	  return ($this->db->insert($insertSql));
     }
